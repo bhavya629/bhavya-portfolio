@@ -1,0 +1,11 @@
+- [ ] Update pages/index.js: premium US-focused homepage sections
+  - [ ] Remove Timeline, Skills Progress, Fake Testimonials sections and related data arrays
+  - [ ] Update Stats section to exact 4 items requested
+  - [ ] Add Why Work With Me section with exact 6 items requested
+  - [ ] Keep Hero, About, Featured Projects, Services, Contact CTA, Footer (and routing)
+  - [ ] Ensure PremiumHover usage remains intact
+- [ ] Update styles/globals.css: dark luxury UI polish (spacing, typography, glass, animations)
+  - [ ] Add new styles for Why Work With Me section + animation hooks
+  - [ ] Remove/neutralize styles that would affect removed sections (optional, but avoid breaking others)
+- [ ] Final check: build/lint/test Next.js
+

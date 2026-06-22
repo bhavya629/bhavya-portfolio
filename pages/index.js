@@ -1,45 +1,18 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import PremiumHover from "@/components/PremiumHover";
 import {
   FaArrowRight,
   FaBriefcase,
   FaCode,
-  FaDatabase,
   FaEnvelope,
   FaLaptopCode,
   FaMobileAlt,
   FaPhoneAlt,
-  FaQuoteLeft,
   FaRocket,
   FaServer,
 } from "react-icons/fa";
-
-const skills = [
-  "Next.js",
-  "React.js",
-  "JavaScript",
-  "Node.js",
-  "MySQL",
-  "Prisma",
-  "Responsive CSS",
-  "API Integration",
-];
-
-const skillProgress = [
-  { title: "Frontend", value: 92, icon: <FaLaptopCode /> },
-  { title: "Backend", value: 82, icon: <FaServer /> },
-  { title: "Database", value: 78, icon: <FaDatabase /> },
-  { title: "Deployment", value: 74, icon: <FaRocket /> },
-];
-
-const timeline = [
-  "Started Web Development",
-  "Learned React & Next.js",
-  "Internship Projects",
-  "Built Cutopia",
-  "Built Veloura Holidays",
-];
 
 const projects = [
   {
@@ -77,23 +50,47 @@ const services = [
   },
 ];
 
-const testimonials = [
+const whyWorkWithMe = [
   {
-    name: "Rohan Mehta",
-    role: "Small Business Owner",
-    text: "Bhavya understood the business requirement quickly and delivered a clean website experience that felt professional from the first visit.",
+    icon: <FaLaptopCode />,
+    title: "Fast Loading Websites",
+    text: "Optimized performance from first paint to smooth interactions.",
   },
   {
-    name: "Priya Shah",
-    role: "Travel Consultant",
-    text: "The travel website layout was polished, responsive, and easy for customers to browse. The final result looked premium and trustworthy.",
+    icon: <FaCode />,
+    title: "Mobile First Design",
+    text: "Layouts engineered for touch, clarity, and consistency on every screen.",
   },
   {
-    name: "Amit Patel",
-    role: "Startup Founder",
-    text: "The project was handled with clear communication, practical feature planning, and strong attention to mobile responsiveness.",
+    icon: <FaServer />,
+    title: "SEO Friendly Development",
+    text: "Clean structure, metadata, and best practices for long-term visibility.",
+  },
+  {
+    icon: <FaRocket />,
+    title: "Modern Next.js Architecture",
+    text: "Scalable components, routing-ready structure, and maintainable patterns.",
+  },
+  {
+    icon: <FaCode />,
+    title: "Clean Maintainable Code",
+    text: "Readable, reusable code with consistent conventions and thoughtful abstractions.",
+  },
+  {
+    icon: <FaBriefcase />,
+    title: "Business Focused Solutions",
+    text: "Built for conversions—clear UX, practical features, and real business goals.",
   },
 ];
+
+const stats = [
+  { value: "3+", label: "Projects Delivered" },
+  { value: "Next.js", label: "Next.js Specialist" },
+  { value: "Full Stack", label: "Full Stack Development" },
+  { value: "Business", label: "Business Website Solutions" },
+];
+
+const whyWorkWithMeList = whyWorkWithMe;
 
 export default function Home() {
   return (
@@ -108,21 +105,20 @@ export default function Home() {
 
       <main className="site-shell">
         <nav className="navbar">
+
           <Link href="/" className="brand">
             <span>Bhavya</span> Desai
           </Link>
 
           <div className="nav-links">
-            <Link href="/">Home</Link>
-            <Link href="/about">About</Link>
-            <Link href="/projects">Projects</Link>
-            <Link href="/services">Services</Link>
-            <Link href="/contact">Contact</Link>
+            <PremiumHover href="/" text="Home" className="scramble-link" sound />
+            <PremiumHover href="/about" text="About" className="scramble-link" sound />
+            <PremiumHover href="/projects" text="Projects" className="scramble-link" sound />
+            <PremiumHover href="/services" text="Services" className="scramble-link" sound />
+            <PremiumHover href="/contact" text="Contact" className="scramble-link" sound />
           </div>
 
-          <Link href="/contact" className="nav-button">
-            Hire Me
-          </Link>
+          <PremiumHover href="/contact" text="Hire Me" className="nav-button" sound />
         </nav>
 
         <section className="hero section-container animate-on-scroll">
@@ -139,12 +135,20 @@ export default function Home() {
             </p>
 
             <div className="hero-actions">
-              <Link href="/projects" className="primary-button">
-                View Projects <FaArrowRight />
-              </Link>
-              <Link href="/contact" className="secondary-button">
-                Contact Me
-              </Link>
+              <PremiumHover
+                href="/projects"
+                text="View Projects"
+                className="primary-button"
+                sound
+              >
+                <FaArrowRight />
+              </PremiumHover>
+              <PremiumHover
+                href="/contact"
+                text="Contact Me"
+                className="secondary-button"
+                sound
+              />
             </div>
 
             <div className="hero-contact">
@@ -214,66 +218,28 @@ export default function Home() {
 
         <section className="section-container animate-on-scroll">
           <div className="section-heading">
-            <p className="section-label">Journey</p>
-            <h2>Experience Timeline</h2>
+            <p className="section-label">Why Work With Me</p>
+            <h2>Premium results for business websites</h2>
           </div>
 
-          <div className="timeline">
-            {timeline.map((item, index) => (
-              <div className="timeline-item" key={item}>
-                <span>{index + 1}</span>
-                <h3>{item}</h3>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="section-container animate-on-scroll">
-          <div className="section-heading">
-            <p className="section-label">Skills</p>
-            <h2>Tools and technologies I use</h2>
-          </div>
-
-          <div className="skills-grid compact-gap">
-            {skills.map((skill) => (
-              <div className="skill-pill" key={skill}>
-                <FaCode />
-                <span>{skill}</span>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="section-container animate-on-scroll">
-          <div className="section-heading">
-            <p className="section-label">Progress</p>
-            <h2>Skills Progress</h2>
-          </div>
-
-          <div className="progress-grid">
-            {skillProgress.map((skill) => (
-              <article className="progress-card" key={skill.title}>
-                <div className="progress-title">
-                  <span>{skill.icon}</span>
-                  <h3>{skill.title}</h3>
-                  <strong>{skill.value}%</strong>
-                </div>
-                <div className="progress-track">
-                  <div
-                    className="progress-fill"
-                    style={{ width: `${skill.value}%` }}
-                  />
-                </div>
+          <div className="cards-grid">
+            {whyWorkWithMe.map((item) => (
+              <article className="service-card" key={item.title}>
+                <div className="card-icon">{item.icon}</div>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
               </article>
             ))}
           </div>
         </section>
 
+
         <section className="section-container animate-on-scroll">
           <div className="section-heading">
-            <p className="section-label">Featured Work</p>
-            <h2>Projects preview</h2>
+            <p className="section-label">Featured Projects</p>
+            <h2>Selected Work</h2>
           </div>
+
 
           <div className="cards-grid">
             {projects.map((project) => (
@@ -289,9 +255,12 @@ export default function Home() {
           </div>
 
           <div className="center-action">
-            <Link href="/projects" className="secondary-button">
-              See Project Details
-            </Link>
+            <PremiumHover
+              href="/projects"
+              text="See Project Details"
+              className="secondary-button"
+              sound
+            />
           </div>
         </section>
 
@@ -312,23 +281,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="section-container animate-on-scroll">
-          <div className="section-heading">
-            <p className="section-label">Testimonials</p>
-            <h2>What clients say</h2>
-          </div>
 
-          <div className="testimonial-grid">
-            {testimonials.map((testimonial) => (
-              <article className="testimonial-card" key={testimonial.name}>
-                <FaQuoteLeft />
-                <p>{testimonial.text}</p>
-                <h3>{testimonial.name}</h3>
-                <span>{testimonial.role}</span>
-              </article>
-            ))}
-          </div>
-        </section>
 
         <section className="contact-cta section-container animate-on-scroll">
           <div>
@@ -339,9 +292,14 @@ export default function Home() {
               responsive, and business-ready website.
             </p>
           </div>
-          <Link href="/contact" className="primary-button">
-            Contact Me <FaArrowRight />
-          </Link>
+          <PremiumHover
+            href="/contact"
+            text="Contact Me"
+            className="primary-button"
+            sound
+          >
+            <FaArrowRight />
+          </PremiumHover>
         </section>
 
         <footer className="footer">

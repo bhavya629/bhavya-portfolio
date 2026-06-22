@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import { useState } from "react";
+import PremiumHover from "../components/PremiumHover";
 import { FaEnvelope, FaPaperPlane, FaPhoneAlt } from "react-icons/fa";
 
 export default function Contact() {
@@ -9,10 +10,12 @@ export default function Contact() {
     email: "",
     message: "",
   });
+
   const [status, setStatus] = useState({
     type: "",
     message: "",
   });
+
   const [isSending, setIsSending] = useState(false);
 
   function handleChange(event) {
@@ -22,6 +25,43 @@ export default function Contact() {
       ...currentData,
       [name]: value,
     }));
+  }
+
+  function playTypingSound(event) {
+    const blockedKeys = [
+      "Shift",
+      "Control",
+      "Alt",
+      "Meta",
+      "Tab",
+      "CapsLock",
+      "Escape",
+      "ArrowLeft",
+      "ArrowRight",
+      "ArrowUp",
+      "ArrowDown",
+    ];
+
+    if (blockedKeys.includes(event.key)) return;
+    if (typeof window === "undefined") return;
+
+    const soundSetting = localStorage.getItem("sound-setting");
+    if (soundSetting === "muted") return;
+
+    try {
+      const audio = new Audio("/sounds/perfect-key-click.mp3");
+      audio.volume = 0.12;
+      audio.currentTime = 0;
+
+      audio.play().catch(() => {});
+
+      setTimeout(() => {
+        audio.pause();
+        audio.currentTime = 0;
+      }, 120);
+    } catch (error) {
+      console.log("Typing sound error:", error);
+    }
   }
 
   async function handleSubmit(event) {
@@ -53,6 +93,7 @@ export default function Contact() {
         email: "",
         message: "",
       });
+
       setStatus({
         type: "success",
         message: "Thank you! Your message has been sent successfully.",
@@ -82,16 +123,16 @@ export default function Contact() {
           <Link href="/" className="brand">
             <span>Bhavya</span> Desai
           </Link>
+
           <div className="nav-links">
-            <Link href="/">Home</Link>
-            <Link href="/about">About</Link>
-            <Link href="/projects">Projects</Link>
-            <Link href="/services">Services</Link>
-            <Link href="/contact">Contact</Link>
+            <PremiumHover href="/" text="Home" className="scramble-link" sound />
+            <PremiumHover href="/about" text="About" className="scramble-link" sound />
+            <PremiumHover href="/projects" text="Projects" className="scramble-link" sound />
+            <PremiumHover href="/services" text="Services" className="scramble-link" sound />
+            <PremiumHover href="/contact" text="Contact" className="scramble-link" sound />
           </div>
-          <Link href="/contact" className="nav-button">
-            Hire Me
-          </Link>
+
+          <PremiumHover href="/contact" text="Hire Me" className="nav-button" sound />
         </nav>
 
         <section className="page-hero section-container animate-on-scroll">
@@ -133,6 +174,7 @@ export default function Contact() {
               placeholder="Your name"
               value={formData.name}
               onChange={handleChange}
+              onKeyDown={playTypingSound}
             />
 
             <label htmlFor="email">Email</label>
@@ -143,6 +185,7 @@ export default function Contact() {
               placeholder="your@email.com"
               value={formData.email}
               onChange={handleChange}
+              onKeyDown={playTypingSound}
             />
 
             <label htmlFor="message">Message</label>
@@ -153,6 +196,7 @@ export default function Contact() {
               placeholder="Tell me about your project"
               value={formData.message}
               onChange={handleChange}
+              onKeyDown={playTypingSound}
             />
 
             {status.message && (
@@ -161,13 +205,16 @@ export default function Contact() {
               </p>
             )}
 
-            <button
+            <PremiumHover
               type="submit"
               className="primary-button form-button"
               disabled={isSending}
+              text={isSending ? "Sending..." : "Submit"}
+              scramble={false}
+              sound
             >
-              {isSending ? "Sending..." : "Submit"} <FaPaperPlane />
-            </button>
+              <FaPaperPlane />
+            </PremiumHover>
           </form>
         </section>
 

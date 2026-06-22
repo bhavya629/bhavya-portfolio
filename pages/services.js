@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import PremiumHover from "@/components/PremiumHover";
 import {
   FaArrowRight,
   FaChartLine,
@@ -60,15 +61,13 @@ export default function Services() {
             <span>Bhavya</span> Desai
           </Link>
           <div className="nav-links">
-            <Link href="/">Home</Link>
-            <Link href="/about">About</Link>
-            <Link href="/projects">Projects</Link>
-            <Link href="/services">Services</Link>
-            <Link href="/contact">Contact</Link>
+            <PremiumHover href="/" text="Home" className="scramble-link" sound />
+            <PremiumHover href="/about" text="About" className="scramble-link" sound />
+            <PremiumHover href="/projects" text="Projects" className="scramble-link" sound />
+            <PremiumHover href="/services" text="Services" className="scramble-link" sound />
+            <PremiumHover href="/contact" text="Contact" className="scramble-link" sound />
           </div>
-          <Link href="/contact" className="nav-button">
-            Hire Me
-          </Link>
+          <PremiumHover href="/contact" text="Hire Me" className="nav-button" sound />
         </nav>
 
         <section className="page-hero section-container animate-on-scroll">
@@ -101,9 +100,14 @@ export default function Services() {
               responsive, and professional web experience.
             </p>
           </div>
-          <Link href="/contact" className="primary-button">
-            Contact Me <FaArrowRight />
-          </Link>
+          <PremiumHover
+            href="/contact"
+            text="Contact Me"
+            className="primary-button"
+            sound
+          >
+            <FaArrowRight />
+          </PremiumHover>
         </section>
 
         <footer className="footer">

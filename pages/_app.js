@@ -1,7 +1,10 @@
 import { useEffect } from "react";
+import useTypingSound from "@/hooks/useTypingSound";
 import "../styles/globals.css";
 
 export default function App({ Component, pageProps }) {
+  useTypingSound();
+
   useEffect(() => {
     const animatedItems = document.querySelectorAll(".animate-on-scroll");
 
