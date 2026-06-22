@@ -1,3 +1,4 @@
+import MobileMenu from "@/components/MobileMenu";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -118,7 +119,9 @@ export default function Home() {
             <PremiumHover href="/contact" text="Contact" className="scramble-link" sound />
           </div>
 
-          <PremiumHover href="/contact" text="Hire Me" className="nav-button" sound />
+         
+         <PremiumHover href="/contact" text="Hire Me" className="nav-button" sound />
+        <MobileMenu />
         </nav>
 
         <section className="hero section-container animate-on-scroll">
